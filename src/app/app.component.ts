@@ -36,7 +36,7 @@ export class AppComponent {
     if (this.eventToEdit) {
       const index = this.events.findIndex((event) => event === this.eventToEdit);
       if (index !== -1) {
-        this.events[index] = { ...this.eventToEdit };
+        this.events[index] = { ...this.event };
         this.editingMode = false;
         this.eventToEdit = null;
         this.event = new Event();

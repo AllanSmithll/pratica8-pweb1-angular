@@ -1,4 +1,3 @@
-<h1>{{ title }}</h1>
 <mat-card class="mat-card-area">
   <mat-card-header>
     <mat-card-title>Cadastrar Eventos</mat-card-title>
@@ -8,14 +7,40 @@
       <mat-label>Nome</mat-label>
       <input matInput [(ngModel)]="event.name" placeholder="digite o nome" />
     </mat-form-field>
-
     <mat-form-field appearance="fill" class="mat-form-principal">
-      <mat-label>ID</mat-label>
-      <input matInput [(ngModel)]="event.id" placeholder="digite o cpf" />
+      <mat-label>Data</mat-label>
+      <input matInput [(ngModel)]="event.date" placeholder="digite a data" />
+    </mat-form-field>
+    <mat-form-field appearance="fill" class="mat-form-principal">
+      <mat-label>Local</mat-label>
+      <input matInput [(ngModel)]="event.location" placeholder="digite o local" />
     </mat-form-field>
 
   </mat-card-content>
   <mat-card-footer>
-
+    <button
+      mat-icon-button
+      color="primary"
+      (click)="addEvent()"
+    >
+      <mat-icon>add</mat-icon>
+    </button>
   </mat-card-footer>
+</mat-card>
+
+<br />
+
+<mat-card *ngFor="let even of events" class="mat-card-simples">
+  <mat-card-header>
+    <mat-card-title
+      ><mat-icon>event</mat-icon>{{ even.name }}</mat-card-title
+    >
+    <mat-card-subtitle *ngIf="even.name"
+      >Data: {{ even.date | date}} Local: {{even.location}}</mat-card-subtitle
+    >
+  </mat-card-header>
+  <mat-card-content>
+    Blablabla blaBlablabla blaBlablabla blaBlablabla blaBlablabla blaBlablabla
+    blaBlablabla bla
+  </mat-card-content>
 </mat-card>

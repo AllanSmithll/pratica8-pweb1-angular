@@ -16,7 +16,7 @@ export class AppComponent {
     this.events = new Array<Event>();
   }
 
-  inserirEvent(): void {
+  addEvent(): void {
     this.events.push(this.event);
     this.event = new Event();
   }

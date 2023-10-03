@@ -15,6 +15,10 @@
       <mat-label>Local</mat-label>
       <input matInput [(ngModel)]="event.location" placeholder="digite o local" />
     </mat-form-field>
+    <mat-form-field appearance="fill" class="mat-form-principal">
+      <mat-label>Descrição</mat-label>
+      <input matInput [(ngModel)]="event.description" placeholder="digite uma descrição" />
+    </mat-form-field>
 
   </mat-card-content>
   <mat-card-footer>
@@ -24,6 +28,13 @@
       (click)="addEvent()"
     >
       <mat-icon>add</mat-icon>
+    </button>
+    <button
+    mat-icon-button
+    color="primary"
+    *ngIf="editingMode"
+    (click)="saveEdit()">
+      <mat-icon>check</mat-icon>
     </button>
   </mat-card-footer>
 </mat-card>
@@ -36,11 +47,16 @@
       ><mat-icon>event</mat-icon>{{ even.name }}</mat-card-title
     >
     <mat-card-subtitle *ngIf="even.name"
-      >Data: {{ even.date | date}} Local: {{even.location}}</mat-card-subtitle
+      >Data: {{ even.date | date}} - Local: {{even.location}}</mat-card-subtitle
     >
   </mat-card-header>
   <mat-card-content>
-    Blablabla blaBlablabla blaBlablabla blaBlablabla blaBlablabla blaBlablabla
-    blaBlablabla bla
+    {{even.description}}
   </mat-card-content>
+  <button mat-icon-button color="primary" (click)="editEvent(even)">
+    <mat-icon>edit</mat-icon>
+  </button>
+  <button mat-icon-button color="warn" (click)="deleteEvent(even)">
+    <mat-icon>delete</mat-icon>
+  </button>
 </mat-card>

@@ -19,6 +19,7 @@ export class AppComponent {
   }
 
   addEvent(): void {
+    this.event.id = this.generateEventId();
     this.events.push(this.event);
     this.event = new Event();
   }
@@ -34,7 +35,7 @@ export class AppComponent {
 
   saveEdit(): void {
     if (this.eventToEdit) {
-      const index = this.events.findIndex((event) => event === this.eventToEdit);
+      const index = this.events.findIndex((event) => event.id === this.eventToEdit?.id);
       if (index !== -1) {
         this.events[index] = { ...this.event };
         this.editingMode = false;
@@ -45,9 +46,13 @@ export class AppComponent {
   }  
 
   deleteEvent(eventToDelete: Event): void {
-    const index = this.events.findIndex((event) => event === eventToDelete);
+    const index = this.events.findIndex((event) => event.id === eventToDelete.id);
     if (index !== -1) {
       this.events.splice(index, 1);
     }
+  }
+
+  private generateEventId(): number {
+    return this.events.length + 1;
   }
 }
